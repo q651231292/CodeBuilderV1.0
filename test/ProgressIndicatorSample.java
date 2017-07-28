@@ -7,16 +7,11 @@
  */
 
 import javafx.application.Application;
-
 import javafx.scene.Group;
-
 import javafx.scene.Scene;
-
-import javafx.stage.Stage;
-
 import javafx.scene.control.ProgressIndicator;
-
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 
 

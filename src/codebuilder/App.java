@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
+import codebuilder.dao.Dao;
+import codebuilder.dao.impl.DerbyDao;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import rcu.InitTable;
 
 public class App extends Application {
 
@@ -19,10 +22,31 @@ public class App extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		stage = primaryStage;
-		replaceScene("Index.fxml");
+		replaceScene("/fxml/Index.fxml");
+		initTable();
 		stage.getIcons().add(new Image("/img/chuizi.png"));
 		stage.setTitle("codebuilder");
 		stage.show();
+	}
+
+	private void initTable() {
+		Platform.runLater(() -> {
+			boolean isNotExists = false;
+			Dao dao = new DerbyDao();
+			isNotExists = dao.tableIsNotExists("TEMP");
+			isNotExists = dao.tableIsNotExists("TEMP_DATA");
+			if (isNotExists) {
+				try {
+					InitTable.createTable();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		new Thread(() -> {
+
+		}).start();
+
 	}
 
 	public static void main(String[] args) {
@@ -30,14 +54,16 @@ public class App extends Application {
 	}
 
 	private static void replaceScene(String sceneFxml) {
+		URL url = App.class.getResource(sceneFxml);
+		Parent root = null;
 		try {
-			URL url = App.class.getResource("/fxml/" + sceneFxml);
-			Parent root = FXMLLoader.load(url);
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
+			root = FXMLLoader.load(url);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(App.class.getResource("/css/temp.css").toExternalForm());
+		stage.setScene(scene);
 	}
 
 	/**
@@ -49,7 +75,7 @@ public class App extends Application {
 		new Thread(() -> {
 
 			Platform.runLater(() -> {
-				App.replaceScene("Loading.fxml");
+				App.replaceScene("/fxml/Loading.fxml");
 
 			});
 			App.sleep(1);
@@ -68,9 +94,7 @@ public class App extends Application {
 	 */
 	public static void sleep(long timeout) {
 		try {
-			System.out.println("begin sleep");
-			TimeUnit.SECONDS.sleep(timeout);
-			System.out.println("end sleep ");
+			TimeUnit.SECONDS.sleep(timeout / 2);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

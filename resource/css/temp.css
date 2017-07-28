@@ -1,0 +1,9 @@
+.values{
+	-fx-min-height: 200px
+}
+.vbox{
+	-fx-spacing: 8px
+}
+.hbox{
+	-fx-spacing: 8px
+}
