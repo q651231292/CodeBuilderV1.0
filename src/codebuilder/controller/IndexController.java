@@ -14,7 +14,7 @@ public class IndexController {
 
 	@FXML
 	public void diyTempTo(ActionEvent event) {
-		App.SceneReplacer("/fxml/temp/QueryTempTo.fxml");
+		App.SceneReplacer("/fxml/temp/TempList.fxml");
 	}
 	@FXML
 	public void createCodeTo(ActionEvent event) {

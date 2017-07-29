@@ -7,6 +7,8 @@ public interface Dao {
 
 	List<Map<String,String>> query(String sql, Object... objs);
 
+	Map<String,String> queryOne(String sql, Object... objs);
+
 	int add(String sql, Object... objs);
 
 	int mod(String sql, Object... objs);

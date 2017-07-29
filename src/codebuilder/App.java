@@ -2,7 +2,6 @@ package codebuilder;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.concurrent.TimeUnit;
 
 import codebuilder.dao.Dao;
 import codebuilder.dao.impl.DerbyDao;
@@ -43,10 +42,6 @@ public class App extends Application {
 				}
 			}
 		});
-		new Thread(() -> {
-
-		}).start();
-
 	}
 
 	public static void main(String[] args) {
@@ -73,12 +68,10 @@ public class App extends Application {
 	 */
 	public static void SceneReplacer(String sceneFxml) {
 		new Thread(() -> {
-
 			Platform.runLater(() -> {
 				App.replaceScene("/fxml/Loading.fxml");
-
 			});
-			App.sleep(1);
+			App.sleep(1000);
 			Platform.runLater(() -> {
 				App.replaceScene(sceneFxml);
 
@@ -94,7 +87,7 @@ public class App extends Application {
 	 */
 	public static void sleep(long timeout) {
 		try {
-			TimeUnit.SECONDS.sleep(timeout / 2);
+			Thread.sleep(timeout/2);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

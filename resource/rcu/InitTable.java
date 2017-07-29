@@ -26,7 +26,7 @@ public class InitTable {
 
 
 	public static void createTable() {
-		Dao dao = new DerbyDao();
+//		Dao dao = new DerbyDao();
 //		String temp_sql = "" +
 //		"CREATE TABLE TEMP "+
 //		"("+
@@ -64,7 +64,7 @@ public class InitTable {
 		Dao jdbc = new DerbyDao();
 		List<Map<String,String>> query = jdbc.query("select * from temp ");
 		System.out.println(query);
-		query = jdbc.query("select * from temp_data ");
+		query = jdbc.query("select * from temp_data  where  temp_id = 'ef7d85e4-17a8-4bbc-a149-f8cc3e0e5285'");
 		System.out.println(query);
 	}
 

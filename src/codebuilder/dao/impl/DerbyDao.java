@@ -17,8 +17,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import codebuilder.dao.Dao;
 
@@ -174,5 +172,14 @@ public class DerbyDao implements Dao{
         }
         return true;
     }
+
+	@Override
+	public Map<String, String> queryOne(String sql, Object... objs) {
+		List<Map<String, String>> list = query(sql,objs);
+		if(list!=null){
+			return list.get(0);
+		}
+		return null;
+	}
 
 }

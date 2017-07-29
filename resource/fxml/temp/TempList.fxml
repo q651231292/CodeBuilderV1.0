@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="403.0" prefWidth="579.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="codebuilder.controller.TempController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="codebuilder.controller.temp.TempListController">
    <children>
       <Label contentDisplay="CENTER" layoutX="14.0" layoutY="14.0" text="自定义模板" AnchorPane.leftAnchor="14.0">
          <font>
@@ -31,8 +31,9 @@
       </HBox>
       <TableView fx:id="tempList" layoutX="26.0" layoutY="102.0" prefHeight="280.0" prefWidth="539.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
         <columns>
-          <TableColumn prefWidth="513.0" text="模板" />
+          <TableColumn fx:id="tempCol" prefWidth="513.0" text="模板" />
         </columns>
       </TableView>
+      <Button layoutX="530.0" layoutY="66.0" mnemonicParsing="false" onAction="#back" prefHeight="20.0" prefWidth="50.0" text="返回" AnchorPane.rightAnchor="20.0" />
    </children>
 </AnchorPane>
