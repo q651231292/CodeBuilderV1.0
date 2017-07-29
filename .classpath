@@ -5,6 +5,6 @@
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
-	<classpathentry kind="lib" path="D:/.m2/repository/org/apache/derby/derby/10.13.1.1/derby-10.13.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/derby-10.13.1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
