@@ -18,6 +18,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 
 public class TempListController implements Initializable{
 
@@ -25,6 +27,15 @@ public class TempListController implements Initializable{
 	TableView<Temp> tempList;
 	@FXML
 	TableColumn<Temp, String> tempCol;
+	@FXML
+	Label title;
+	@FXML
+	Button addBtn;
+	@FXML
+	Button delBtn;
+	@FXML
+	Button modBtn;
+
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

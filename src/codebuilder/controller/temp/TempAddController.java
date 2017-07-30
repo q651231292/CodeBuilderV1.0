@@ -15,17 +15,14 @@ import codebuilder.model.Global;
 import codebuilder.util.AlertTool;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.control.Button;
 
 public class TempAddController implements Initializable{
 
@@ -42,14 +39,12 @@ public class TempAddController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		if(Global.id != null){
 			String tempId = Global.id;
-			Global.clear();
+			Global.clearId();
 	        Dao dao = new DerbyDao();
 	        //获取模板
 	        Map<String, String> temp = dao.queryOne("select * from temp where temp_id = '"+tempId+"'");
-	        System.out.println(temp);
 	        //获取模板数据
 	        List<Map<String, String>> tempDatas = dao.query("SELECT * FROM TEMP_DATA WHERE TEMP_ID = '"+tempId+"' ");
-	        System.out.println(tempDatas);
 
 	        this.tempId.setText(temp.get("TEMP_ID"));
 	        tempName.setText(temp.get("TEMP_NAME"));
@@ -85,7 +80,6 @@ public class TempAddController implements Initializable{
 				String value = values.get(i);
 				isSuccess = dao.mod("update temp_data set label='"+label+"',value='"+value+"' where temp_data_id='"+tempDataId+"'");
 			}
-			System.out.println(isSuccess);
 			if(isSuccess==1){
 				AlertTool.successAlert();
 				App.SceneReplacer("/fxml/temp/TempList.fxml");

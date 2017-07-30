@@ -23,6 +23,7 @@ public class App extends Application {
 		stage = primaryStage;
 		replaceScene("/fxml/Index.fxml");
 		initTable();
+		stage.setResizable(false);
 		stage.getIcons().add(new Image("/img/chuizi.png"));
 		stage.setTitle("codebuilder");
 		stage.show();
