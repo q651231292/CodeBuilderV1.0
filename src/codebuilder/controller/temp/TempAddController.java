@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import codebuilder.App;
 import codebuilder.dao.Dao;
@@ -18,9 +20,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -72,6 +76,7 @@ public class TempAddController implements Initializable{
 		List<String> tempDataIds = lableAndValue.get("tempDataIds");
 
 		Dao dao = new DerbyDao();
+
 		isSuccess = dao.mod("update temp set temp_name = '"+tempName+"' where temp_id='"+tempId+"'");
 		if(isSuccess==1){
 			for (int i = 0; i < tempDataIds.size(); i++) {
@@ -156,6 +161,7 @@ public class TempAddController implements Initializable{
 		Dao dao = new DerbyDao();
 		String tempId = UUID.randomUUID().toString();
 		isSuccess = dao.add("insert into temp values('"+tempId+"','"+tempName.getText()+"')");
+
 		if(isSuccess==1){
 			for (int i = 0; i < labels.size(); i++) {
 				String label = labels.get(i);

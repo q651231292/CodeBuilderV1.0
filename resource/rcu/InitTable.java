@@ -9,12 +9,12 @@ import codebuilder.dao.impl.DerbyDao;
 
 public class InitTable {
 
-	public static void main(String[] args) {
-//		createTable();
-//		insertTest();
-		queryTest();
-//		deleteTable();
-	}
+//	public static void main(String[] args) {
+////		createTable();
+////		insertTest();
+//		queryTest();
+////		deleteTable();
+//	}
 
 
 	private static void deleteTable() {
@@ -26,28 +26,28 @@ public class InitTable {
 
 
 	public static void createTable() {
-//		Dao dao = new DerbyDao();
-//		String temp_sql = "" +
-//		"CREATE TABLE TEMP "+
-//		"("+
-//		"   TEMP_ID              VARCHAR(36)          NOT NULL,"+
-//		"   TEMP_NAME            VARCHAR(100),"+
-//		"   CONSTRAINT PK_TEMP PRIMARY KEY (TEMP_ID)"+
-//		")";
-//
-//
-//		dao.add(temp_sql);
+		Dao dao = new DerbyDao();
+		String temp_sql = "" +
+		"CREATE TABLE TEMP "+
+		"("+
+		"   TEMP_ID              VARCHAR(36)          NOT NULL,"+
+		"   TEMP_NAME            VARCHAR(100),"+
+		"   CONSTRAINT PK_TEMP PRIMARY KEY (TEMP_ID)"+
+		")";
 
-//		String temp_data_sql = "" +
-//		"CREATE TABLE TEMP_DATA "+
-//		"("+
-//		"   TEMP_DATA_ID         VARCHAR(36)          NOT NULL,"+
-//		"   TEMP_ID              VARCHAR(36),"+
-//		"   LABEL                  VARCHAR(100),"+
-//		"   VALUE                VARCHAR(32672),"+
-//		"   CONSTRAINT PK_TEMP_DATA PRIMARY KEY (TEMP_DATA_ID)"+
-//		")";
-//		dao.add(temp_data_sql);
+
+		dao.add(temp_sql);
+
+		String temp_data_sql = "" +
+		"CREATE TABLE TEMP_DATA "+
+		"("+
+		"   TEMP_DATA_ID         VARCHAR(36)          NOT NULL,"+
+		"   TEMP_ID              VARCHAR(36),"+
+		"   LABEL                  VARCHAR(100),"+
+		"   VALUE                VARCHAR(32672),"+
+		"   CONSTRAINT PK_TEMP_DATA PRIMARY KEY (TEMP_DATA_ID)"+
+		")";
+		dao.add(temp_data_sql);
 
 	}
 
